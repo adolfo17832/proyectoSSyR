@@ -1,0 +1,9 @@
+databaseclass=proyectoSSyR.servicio.Conexion_mySQL
+jdbc=jdbc:mysql://
+driver=com.mysql.jdbc.Driver
+host=localhost
+database=db_SSyR
+username=root
+password=root
+option=charSet=LATIN1
+mostrarproperties=si
