@@ -1,7 +1,7 @@
 databaseclass=proyectoSSyR.servicio.Conexion_mySQL
 jdbc=jdbc:mysql://
 driver=com.mysql.jdbc.Driver
-host=localhost
+host=192.168.1.71
 database=db_SSyR
 username=root
 password=root
