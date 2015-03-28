@@ -29,7 +29,7 @@ public class Inicio extends javax.swing.JFrame {
          frame.setVisible(false);
        
         
-        
+        //esto es un comentario
         
         
         ImageFondo image=new ImageFondo();
