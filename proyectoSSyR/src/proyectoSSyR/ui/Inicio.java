@@ -30,7 +30,7 @@ public class Inicio extends javax.swing.JFrame {
        
         
         //esto es un comentario
-        
+        //coment 2
         
         ImageFondo image=new ImageFondo();
         image.setImage("user.jpg");
