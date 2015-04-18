@@ -9,21 +9,27 @@ import java.sql.SQLException;
 import proyectoSSyR.negocio.ServicioRequisito;
 
 
+
+
 /**
  *
  * @author adolfoangelliboriobonifacio
  */
 public class ControladorServicioRequisito {
-    
-    public void addServicio(int id_servicio,int constancia,int presentacion,int acepTrabajo,int fotos,int solicitud,int compromiso,String fechaInicio, String fechaTerminada)
-                               throws ClassNotFoundException, 
+     /**
+     *Inserta los avances requeridos para finalizar el Servicio Social
+     * 
+     */
+    public void addServicioRequisito(int id_Requisito, int reporte1, int reporte2, int reporte3, int reporteOtro, int planTrabajo, int terminacion, int trabajoFinal, int liberacion, String observacion) 
+                              throws ClassNotFoundException, 
                                InstantiationException, 
                                IllegalAccessException, 
                                SQLException
     {
         
-        ServicioRequisito objservicioRequisito = new ServicioRequisito(id_servicio, constancia, presentacion, acepTrabajo, fotos, solicitud, compromiso, fechaInicio, fechaTerminada);
-        objservicioRequisito.insertarservicioRequisito();
+        ServicioRequisito objservicioRequisito = new ServicioRequisito(id_Requisito, reporte1, reporte2, reporte3, reporteOtro, planTrabajo, terminacion, trabajoFinal, liberacion, observacion);
+                objservicioRequisito.insertarservicioRequisito();
     }
+    
     
 }

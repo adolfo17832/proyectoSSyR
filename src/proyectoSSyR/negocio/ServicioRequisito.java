@@ -5,7 +5,6 @@
  */
 package proyectoSSyR.negocio;
 
-
 import java.sql.SQLException;
 import proyectoSSyR.db.ServicioRequisitoBD;
 
@@ -14,162 +13,179 @@ import proyectoSSyR.db.ServicioRequisitoBD;
  * @author adolfoangelliboriobonifacio
  */
 public class ServicioRequisito {
-    private int id_servicio;
-    private int constancia;
-    private int presentacion;
-    private int acepTrabajo;
-    private int fotos;
-    private int solicitud;
-    private int compromiso;
-    private String fechaInicio;
-    private String fechaTerminada;
+   private int id_Requisito;
+    private int reporte1;
+    private int reporte2;
+    private int reporte3;
+    private int reporteOtro;
+    private int planTrabajo;
+    private int terminacion;
+    private int trabajoFinal;
+    private int liberacion;
+    private String observacion;
 
-    public ServicioRequisito(){
+    public ServicioRequisito() {
     }
-    public ServicioRequisito(int id_servicio,int constancia,int presentacion,int acepTrabajo,int fotos,int solicitud,int compromiso,String fechaInicio, String fechaTerminada){
-        this.id_servicio = id_servicio;
-        this.constancia = constancia;
-        this.presentacion = presentacion;
-        this.acepTrabajo = acepTrabajo;
-        this.fotos = fotos;
-        this.solicitud = solicitud;
-        this.compromiso = compromiso;
-        this.fechaInicio = fechaInicio;
-        this.fechaTerminada = fechaTerminada;
 
+    public ServicioRequisito(int id_Requisito, int reporte1, int reporte2, int reporte3, int reporteOtro, int planTrabajo, int terminacion, int trabajoFinal, int liberacion, String observacion) {
+        this.id_Requisito = id_Requisito;
+        this.reporte1 = reporte1;
+        this.reporte2 = reporte2;
+        this.reporte3 = reporte3;
+        this.reporteOtro = reporteOtro;
+        this.planTrabajo = planTrabajo;
+        this.terminacion = terminacion;
+        this.trabajoFinal = trabajoFinal;
+        this.liberacion = liberacion;
+        this.observacion = observacion;
     }
+
+    
     /**
-     * @return the id_servicio
+     * @return the id_Requisito
      */
-    public int getId_servicio() {
-        return id_servicio;
-    }
-
-    /**
-     * @param id_servicio the id_servicio to set
-     */
-    public void setId_servicio(int id_servicio) {
-        this.id_servicio = id_servicio;
+    public int getId_Requisito() {
+        return id_Requisito;
     }
 
     /**
-     * @return the constancia
+     * @param id_Requisito the id_Requisito to set
      */
-    public int getConstancia() {
-        return constancia;
+    public void setId_Requisito(int id_Requisito) {
+        this.id_Requisito = id_Requisito;
     }
 
     /**
-     * @param constancia the constancia to set
+     * @return the reporte1
      */
-    public void setConstancia(int constancia) {
-        this.constancia = constancia;
+    public int getReporte1() {
+        return reporte1;
     }
 
     /**
-     * @return the presentacion
+     * @param reporte1 the reporte1 to set
      */
-    public int getPresentacion() {
-        return presentacion;
+    public void setReporte1(int reporte1) {
+        this.reporte1 = reporte1;
     }
 
     /**
-     * @param presentacion the presentacion to set
+     * @return the reporte2
      */
-    public void setPresentacion(int presentacion) {
-        this.presentacion = presentacion;
+    public int getReporte2() {
+        return reporte2;
     }
 
     /**
-     * @return the acepTrabajo
+     * @param reporte2 the reporte2 to set
      */
-    public int getAcepTrabajo() {
-        return acepTrabajo;
+    public void setReporte2(int reporte2) {
+        this.reporte2 = reporte2;
     }
 
     /**
-     * @param acepTrabajo the acepTrabajo to set
+     * @return the reporte3
      */
-    public void setAcepTrabajo(int acepTrabajo) {
-        this.acepTrabajo = acepTrabajo;
+    public int getReporte3() {
+        return reporte3;
     }
 
     /**
-     * @return the fotos
+     * @param reporte3 the reporte3 to set
      */
-    public int getFotos() {
-        return fotos;
+    public void setReporte3(int reporte3) {
+        this.reporte3 = reporte3;
     }
 
     /**
-     * @param fotos the fotos to set
+     * @return the reporteOtro
      */
-    public void setFotos(int fotos) {
-        this.fotos = fotos;
+    public int getReporteOtro() {
+        return reporteOtro;
     }
 
     /**
-     * @return the solicitud
+     * @param reporteOtro the reporteOtro to set
      */
-    public int getSolicitud() {
-        return solicitud;
+    public void setReporteOtro(int reporteOtro) {
+        this.reporteOtro = reporteOtro;
     }
 
     /**
-     * @param solicitud the solicitud to set
+     * @return the planTrabajo
      */
-    public void setSolicitud(int solicitud) {
-        this.solicitud = solicitud;
+    public int getPlanTrabajo() {
+        return planTrabajo;
     }
 
     /**
-     * @return the compromiso
+     * @param planTrabajo the planTrabajo to set
      */
-    public int getCompromiso() {
-        return compromiso;
+    public void setPlanTrabajo(int planTrabajo) {
+        this.planTrabajo = planTrabajo;
     }
 
     /**
-     * @param compromiso the compromiso to set
+     * @return the terminacion
      */
-    public void setCompromiso(int compromiso) {
-        this.compromiso = compromiso;
+    public int getTerminacion() {
+        return terminacion;
     }
 
     /**
-     * @return the fechaInicio
+     * @param terminacion the terminacion to set
      */
-    public String getFechaInicio() {
-        return fechaInicio;
+    public void setTerminacion(int terminacion) {
+        this.terminacion = terminacion;
     }
 
     /**
-     * @param fechaInicio the fechaInicio to set
+     * @return the trabajoFinal
      */
-    public void setFechaInicio(String fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public int getTrabajoFinal() {
+        return trabajoFinal;
     }
 
     /**
-     * @return the fechaTerminada
+     * @param trabajoFinal the trabajoFinal to set
      */
-    public String getFechaTerminada() {
-        return fechaTerminada;
+    public void setTrabajoFinal(int trabajoFinal) {
+        this.trabajoFinal = trabajoFinal;
     }
 
     /**
-     * @param fechaTerminada the fechaTerminada to set
+     * @return the liberacion
      */
-    public void setFechaTerminada(String fechaTerminada) {
-        this.fechaTerminada = fechaTerminada;
+    public int getLiberacion() {
+        return liberacion;
     }
 
-    public void insertarservicioRequisito() throws ClassNotFoundException,
+    /**
+     * @param liberacion the liberacion to set
+     */
+    public void setLiberacion(int liberacion) {
+        this.liberacion = liberacion;
+    }
+
+    /**
+     * @return the observacion
+     */
+    public String getObservacion() {
+        return observacion;
+    }
+
+    /**
+     * @param observacion the observacion to set
+     */
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
+    public void insertarservicioRequisito()throws ClassNotFoundException,
                                    InstantiationException,
                                    IllegalAccessException,
                                    SQLException {
       ServicioRequisitoBD ssrequisito = new ServicioRequisitoBD(this);
         ssrequisito .insertaservicioRequisitoBD();    
        }
-    
 }

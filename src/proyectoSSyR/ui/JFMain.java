@@ -14,9 +14,18 @@ import proyectoSSyR.servicio.InstanciaMetodo;
  * @author adolfoangelliboriobonifacio
  */
 public class JFMain extends javax.swing.JFrame {
-CardLayout card = new CardLayout();
+CardLayout card = new CardLayout();//Contenido
+CardLayout cardmenu = new CardLayout();//Subs.menus
+//Jpanel Contenido
 JPdefault defaulJP;//Jpanel 
- JPAlumno addAlumnoJP;//jpanel 
+JPAlumno addAlumnoJP;//Jpanel 
+JFListAlumno ListAlumnoJP;//Jpanel
+JPListSSR listSSRJP;//Jpanel
+//Submenu Jpanel
+JPdefaultmenu defaulmenuJP;
+smAlumno smAlumno;
+smListAlumno smListAlumno;
+smListSSyR smListAlumnoSSyR;
     /**
      * Creates new form JFMain
      */
@@ -26,19 +35,41 @@ JPdefault defaulJP;//Jpanel
         initComponents();
         
          //deFAULT DE LOS CARD lAYOUT
-         defaulJP= new JPdefault();
+         defaulJP= new JPdefault("its_pto_v.png");
          addAlumnoJP=new JPAlumno();
+         ListAlumnoJP=new JFListAlumno();
+         listSSRJP=new JPListSSR();
+         defaulmenuJP=new JPdefaultmenu();
          
          //Maximizar el JFRame JFMain ala pantalla
-         this.setExtendedState(MAXIMIZED_BOTH);
+         //this.setExtendedState(MAXIMIZED_BOTH);
          this.setLocationRelativeTo(null);
          
          //Se agrega un layout de card lAyout
          jpContenedor.setLayout(card);
-        
-         //SE AGRGAN LOS DEFAULT ALOS PANEL
-          jpContenedor.add(defaulJP, "default");
-          jpContenedor.add(addAlumnoJP, "addAlumno");
+          //Se agrega un layout de cardmenu lAyout
+         jpscontenedor.setLayout(cardmenu);
+         
+         //SE AGREGAN LOS DEFAULT ALOS PANEL
+          jpContenedor.add(defaulJP, "default");//se agrega al panel jpContenedor los paneles contenedores
+          jpContenedor.add(addAlumnoJP, "addAlumno");//Menu Nuevo//se agrega al panel jpContenedor los paneles contenedores
+          jpContenedor.add(ListAlumnoJP, "listAlumno");//Menu Nuevo//se agrega al panel jpContenedor los paneles contenedores
+          jpContenedor.add(listSSRJP, "busquedaSSyR");//Menu Busqueda//se agrega al panel jpContenedor los paneles contenedores
+          
+          //SE CREAN EL OBJETO DE LOS JPANELES DE LOS SUB-MENUS
+          smAlumno=new smAlumno(addAlumnoJP,card,jpContenedor);//smAlumno=new smAlumno(addAlumnoJP);
+          smListAlumno=new smListAlumno(ListAlumnoJP,card,jpContenedor);
+          smListAlumnoSSyR=new smListSSyR(listSSRJP,card,jpContenedor);
+           
+           //SE AGREGAN LOS DEFAULT ALOS PANEL submenu
+           jpscontenedor.add(defaulmenuJP,"defaulmenu");//el panel jpscontenedor es el contenedor donde se cargan  los sub-menus
+           //SE AGERAGN LOS SUB-MENUS
+           jpscontenedor.add(smAlumno,"smalumno");//el panel jpscontenedor es el contenedor donde se cargan  los sub-menus
+           jpscontenedor.add(smListAlumno,"smlistAlumno");//el panel jpscontenedor es el contenedor donde se cargan  los sub-menus
+           jpscontenedor.add(smListAlumnoSSyR,"smbusquedaSSyR");//el panel jpscontenedor es el contenedor donde se cargan  los sub-menus
+          
+          
+          
     }
 
     /**
@@ -51,12 +82,14 @@ JPdefault defaulJP;//Jpanel
     private void initComponents() {
 
         jpContenedor = new javax.swing.JPanel();
+        jpscontenedor = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jmInicio = new javax.swing.JMenu();
         jmNuevo = new javax.swing.JMenu();
         jmiNuevoAlumno = new javax.swing.JMenuItem();
-        jmReporte = new javax.swing.JMenu();
+        jmilistAlumno = new javax.swing.JMenuItem();
         jmBusqueda = new javax.swing.JMenu();
+        jmReporte = new javax.swing.JMenu();
         jmAjustes = new javax.swing.JMenu();
         jmAyuda = new javax.swing.JMenu();
 
@@ -68,12 +101,27 @@ JPdefault defaulJP;//Jpanel
         jpContenedor.setLayout(jpContenedorLayout);
         jpContenedorLayout.setHorizontalGroup(
             jpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jpContenedorLayout.setVerticalGroup(
             jpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 479, Short.MAX_VALUE)
         );
+
+        jpscontenedor.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, null));
+
+        javax.swing.GroupLayout jpscontenedorLayout = new javax.swing.GroupLayout(jpscontenedor);
+        jpscontenedor.setLayout(jpscontenedorLayout);
+        jpscontenedorLayout.setHorizontalGroup(
+            jpscontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 705, Short.MAX_VALUE)
+        );
+        jpscontenedorLayout.setVerticalGroup(
+            jpscontenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 44, Short.MAX_VALUE)
+        );
+
+        jMenuBar1.setMinimumSize(new java.awt.Dimension(500, 800));
 
         jmInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/home.png"))); // NOI18N
         jmInicio.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -83,8 +131,10 @@ JPdefault defaulJP;//Jpanel
         });
         jMenuBar1.add(jmInicio);
 
+        jmNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/student.png"))); // NOI18N
         jmNuevo.setText("Nuevo");
 
+        jmiNuevoAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/newm.png"))); // NOI18N
         jmiNuevoAlumno.setText("Nuevo Alumno");
         jmiNuevoAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,17 +143,35 @@ JPdefault defaulJP;//Jpanel
         });
         jmNuevo.add(jmiNuevoAlumno);
 
+        jmilistAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/alumnos.png"))); // NOI18N
+        jmilistAlumno.setText("Lista de Alumnos");
+        jmilistAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmilistAlumnoActionPerformed(evt);
+            }
+        });
+        jmNuevo.add(jmilistAlumno);
+
         jMenuBar1.add(jmNuevo);
 
+        jmBusqueda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/search.png"))); // NOI18N
+        jmBusqueda.setText("Busqueda");
+        jmBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jmBusquedaMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(jmBusqueda);
+
+        jmReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/report.png"))); // NOI18N
         jmReporte.setText("Reporte");
         jMenuBar1.add(jmReporte);
 
-        jmBusqueda.setText("Busqueda");
-        jMenuBar1.add(jmBusqueda);
-
+        jmAjustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/three115.png"))); // NOI18N
         jmAjustes.setText("Ajustes");
         jMenuBar1.add(jmAjustes);
 
+        jmAyuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/help24.png"))); // NOI18N
         jmAyuda.setText("Ayuda");
         jMenuBar1.add(jmAyuda);
 
@@ -113,60 +181,78 @@ JPdefault defaulJP;//Jpanel
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jpContenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jpscontenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jpscontenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addComponent(jpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 25, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiNuevoAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNuevoAlumnoActionPerformed
-         card.show(jpContenedor, "addAlumno");
+        addAlumnoJP.Nuevo();
+        cardmenu.show(jpscontenedor, "smalumno");//el cardmenu es el contenedor de los sub-menu
+        card.show(jpContenedor, "addAlumno");//el card es el card contenedor de los jpaneles
     }//GEN-LAST:event_jmiNuevoAlumnoActionPerformed
 
     private void jmInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmInicioMouseClicked
-        card.show(jpContenedor, "default");
+        card.show(jpContenedor, "default");//el card es el card contenedor de los jpaneles
+        jmInicio.setSelected(false);
     }//GEN-LAST:event_jmInicioMouseClicked
+
+    private void jmBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jmBusquedaMouseClicked
+      cardmenu.show(jpscontenedor, "smbusquedaSSyR");//el cardmenu es el contenedor de los sub-menu
+      card.show(jpContenedor, "busquedaSSyR");//el card es el card contenedor de los jpaneles
+      jmBusqueda.setSelected(false);
+    }//GEN-LAST:event_jmBusquedaMouseClicked
+
+    private void jmilistAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmilistAlumnoActionPerformed
+        cardmenu.show(jpscontenedor, "smlistAlumno");//el cardmenu es el contenedor de los sub-menu
+        card.show(jpContenedor, "listAlumno");//el card es el card contenedor de los jpaneles
+    }//GEN-LAST:event_jmilistAlumnoActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JFMain().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(JFMain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new JFMain().setVisible(false);
+//            }
+//        });
+//        
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
@@ -177,6 +263,8 @@ JPdefault defaulJP;//Jpanel
     private javax.swing.JMenu jmNuevo;
     private javax.swing.JMenu jmReporte;
     private javax.swing.JMenuItem jmiNuevoAlumno;
+    private javax.swing.JMenuItem jmilistAlumno;
     private javax.swing.JPanel jpContenedor;
+    private javax.swing.JPanel jpscontenedor;
     // End of variables declaration//GEN-END:variables
 }

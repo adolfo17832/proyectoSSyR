@@ -36,7 +36,6 @@ public class JPAlumno extends javax.swing.JPanel {
 
         jLabel6 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         txtNoControl = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -68,17 +67,11 @@ public class JPAlumno extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Helvetica", 1, 14)); // NOI18N
         jLabel11.setText("Registro de Alumnos");
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
         jLabel12.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel12.setText("No. Control");
 
         txtNoControl.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtNoControl.setText("11021104");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Generales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("SansSerif", 1, 13))); // NOI18N
 
@@ -86,16 +79,19 @@ public class JPAlumno extends javax.swing.JPanel {
         jLabel8.setText("Telefono");
 
         txtTelefono.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtTelefono.setText("3223");
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel9.setText("Celular");
 
         txtCelular.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtCelular.setText("3223");
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel10.setText("E-Mail");
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtEmail.setText("angel17832@gmail.com");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -137,16 +133,29 @@ public class JPAlumno extends javax.swing.JPanel {
         jLabel1.setText("Nombre");
 
         txtNombre.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtNombre.setText("Adolfo");
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel2.setText("Apellido");
 
         txtApellido.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtApellido.setText("Liborio");
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel3.setText("Semestre");
 
         txtSemestre.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        txtSemestre.setText("7");
         txtSemestre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSemestreActionPerformed(evt);
@@ -203,13 +212,13 @@ public class JPAlumno extends javax.swing.JPanel {
         cbCurricula.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cbTurno.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        cbTurno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbTurno.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Vespertino", "Matutino" }));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jLabel7.setText("Carrera");
 
         cbCarrera.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        cbCarrera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCarrera.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "GAST", "SISC", "ARQ", "TUR", "GYE", "ITIC" }));
         cbCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCarreraActionPerformed(evt);
@@ -256,10 +265,6 @@ public class JPAlumno extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(183, 183, 183)
-                .addComponent(btnGuardar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -290,9 +295,7 @@ public class JPAlumno extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -300,12 +303,28 @@ public class JPAlumno extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSemestreActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+    private void cbCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbCarreraActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
+ public void Cancelar(){
+     
+    }
+ 
+    public void Guardar(){
         try {
             contAlumno.addAlumno(Integer.parseInt(txtNoControl.getText()),txtNombre.getText(),
                     txtApellido.getText(),Integer.parseInt(txtSemestre.getText()),
-                    cbTurno.getSelectedItem().toString().charAt(0),cbCurricula.getSelectedItem().toString(),cbCarrera.getSelectedItem().toString(),txtTelefono.getText(),txtCelular.getText(),txtEmail.getText(),1);
+                    cbTurno.getSelectedItem().toString().charAt(0),cbCurricula.getSelectedItem().toString(),
+                    cbCarrera.getSelectedItem().toString(),txtTelefono.getText(),txtCelular.getText(),
+                    txtEmail.getText(),1);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(JPAlumno.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -315,16 +334,22 @@ public class JPAlumno extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(JPAlumno.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void cbCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCarreraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbCarreraActionPerformed
-
+  
+ }
+ public void Nuevo(){
+     txtNoControl.setText("");
+     txtNombre.setText("");
+     txtApellido.setText("");
+     txtSemestre.setText("");
+     cbTurno.setSelectedIndex(1);
+     cbCurricula.setSelectedIndex(1);
+     cbCarrera.setSelectedIndex(1);
+     txtTelefono.setText("");
+     txtCelular.setText("");
+     txtEmail.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox cbCarrera;
     private javax.swing.JComboBox cbCurricula;
     private javax.swing.JComboBox cbTurno;

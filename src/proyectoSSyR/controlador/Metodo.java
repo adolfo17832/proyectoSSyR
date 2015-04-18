@@ -7,14 +7,23 @@ package proyectoSSyR.controlador;
 
 import java.io.FileInputStream;
 import java.util.Properties;
+import javafx.scene.control.CheckBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 
 /**
  *
- * @author A Angel
+ * 
  */
 public class Metodo {
+ /**
+ *
+ * Inicia la conexion y carga los datos del archivo que contine la configuracion
+ * de la base de datos
+ * 
+ */
     public void ConexionBD(){
         try {
             FileInputStream fis = new FileInputStream("src/proyectoSSyR/principal/configurardb.txt");
@@ -33,4 +42,28 @@ public class Metodo {
         }
     
     }
+    
+ /**
+ *Limpia le modelo de la la tabla de Alumnos
+ * 
+ */
+        public void limpiar_tabla( DefaultTableModel modelo,JTable tabla) {
+        modelo = (DefaultTableModel) tabla.getModel();
+
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+
+        }
+    }
+ 
+ /**
+ * Convertidor de tipo Booleano a Integer para los checkbox
+ */
+        public int Boolean_Int(boolean cxb){
+        int val = (cxb)? 1 : 0;
+        return val;
+        }
+
+  
+        
 }

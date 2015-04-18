@@ -6,6 +6,7 @@
 package proyectoSSyR.negocio;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import proyectoSSyR.db.AlumnoBD;
 
 /**
@@ -226,4 +227,25 @@ this.estado=estado;
       AlumnoBD alum = new AlumnoBD(this);
         alum.EliminarlogAlumno();    
     }
+
+    public ArrayList<Alumno> obtenerAlumnos()  throws ClassNotFoundException, 
+                                                InstantiationException,
+                                                IllegalAccessException,
+                                                SQLException{
+        
+        AlumnoBD alum = new AlumnoBD();
+        return alum.obtenerAlumnosBD();
+    }
+
+    public String obtenerNoAlumnos() throws ClassNotFoundException, 
+                                                InstantiationException,
+                                                IllegalAccessException,
+                                                SQLException{
+        
+        AlumnoBD alum = new AlumnoBD();
+        return alum.obtenerNoAlumnosBD();
+    }
+
 }
+
+

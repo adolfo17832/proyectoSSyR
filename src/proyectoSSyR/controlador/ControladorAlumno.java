@@ -6,6 +6,7 @@
 package proyectoSSyR.controlador;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import proyectoSSyR.negocio.Alumno;
 
 /**
@@ -59,4 +60,30 @@ public class ControladorAlumno {
         Alumno objAlumno = new Alumno(numcontrol, estado);
         objAlumno.EliminarlogAlumno();
     }
+
+     /**
+     *Obtine todos los alumnos de estado 1 
+     * 
+     */
+    public ArrayList<Alumno> obtenerAlumnos()  throws ClassNotFoundException, 
+                                                InstantiationException,
+                                                IllegalAccessException,
+                                                SQLException{
+        Alumno objAlumno = new Alumno(); 
+        return objAlumno.obtenerAlumnos();
+    }
+   
+    
+     /**
+     *Obtine el alumno con un numero de control especifico con ele estado 1 
+     * 
+     */
+    public String obtenerNoAlumnos(int nocontrol,int estado)  throws ClassNotFoundException, 
+                                                InstantiationException,
+                                                IllegalAccessException,
+                                                SQLException{
+        Alumno objAlumno = new Alumno(nocontrol,estado); 
+        return objAlumno.obtenerNoAlumnos();
+    }
+    
 }

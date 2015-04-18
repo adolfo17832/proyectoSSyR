@@ -6,6 +6,7 @@
 package proyectoSSyR.db;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import proyectoSSyR.negocio.Alumno;
@@ -114,4 +115,61 @@ public class AlumnoBD {
     
     }
     
+     public void VistaAlumno() throws ClassNotFoundException,
+            InstantiationException,
+            IllegalAccessException,
+            SQLException {
+          
+        Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+            cdb.un_sql = " select *from alumnos;";
+            cdb.ps = cdb.conexion.prepareStatement(cdb.un_sql);            
+            cdb.ps.setInt(1,alum.getNumcontrol());
+            cdb.ps.setInt(2,alum.getEstado());
+            cdb.resultado = cdb.ps.executeQuery();
+                        String respuesta = "";
+                while (cdb.resultado.next()) {
+                        respuesta = cdb.resultado.getString(1).toString();
+                } 
+            cdb.ps.executeUpdate();            
+
+    }
+
+    public ArrayList<Alumno> obtenerAlumnosBD() throws ClassNotFoundException,
+            InstantiationException,
+            IllegalAccessException,
+            SQLException {
+        ArrayList<Alumno> Alumnos = new ArrayList<Alumno>();
+        Conexion cdb = ConectarServicio.getInstancia().getConexionDB();
+        cdb.un_sql = "SELECT * FROM alumnos";
+        cdb.resultado = cdb.us_st.executeQuery(cdb.un_sql);
+        if (cdb.resultado != null) {
+            while (cdb.resultado.next()) {
+                alum = new Alumno();
+                alum.setNumcontrol(cdb.resultado.getInt(1));
+                alum.setNombre(cdb.resultado.getString(2));
+                alum.setApellido(cdb.resultado.getString(3));
+                alum.setCarrera(cdb.resultado.getString(4));
+                alum.setCurricula(cdb.resultado.getString(5));
+                alum.setSemestre(cdb.resultado.getInt(6));
+                alum.setTurno(cdb.resultado.getString(7).charAt(0));
+                alum.setTelefono(cdb.resultado.getString(8));
+                alum.setCelular(cdb.resultado.getString(9));
+                alum.setEmail(cdb.resultado.getString(10));
+        
+               Alumnos.add(alum);
+            }
+        }
+
+        return Alumnos;
+    }
+
+    public String obtenerNoAlumnosBD() throws ClassNotFoundException,
+            InstantiationException,
+            IllegalAccessException,
+            SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+   
 }

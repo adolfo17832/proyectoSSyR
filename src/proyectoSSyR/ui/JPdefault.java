@@ -5,16 +5,32 @@
  */
 package proyectoSSyR.ui;
 
+import java.awt.Graphics;
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author adolfoangelliboriobonifacio
  */
 public class JPdefault extends javax.swing.JPanel {
+private Image image = null;
 
-    /**
-     * Creates new form JPdefault
-     */
-    public JPdefault() {
+
+@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int x = (this.getWidth() - image.getWidth(null)) / 2;
+    int y = (this.getHeight() - image.getHeight(null)) / 2;
+    g.drawImage(image, x, y, null);
+     //   g.drawImage(image, 0, 0, image.getWidth(CENTER_ALIGNMENT), image.getHeight(null), null);
+    }
+
+   
+    
+    public JPdefault(String filename) {
+        System.out.println(filename);
+     this.image = new ImageIcon(getClass().getResource(filename)).getImage();    
         initComponents();
     }
 
@@ -27,30 +43,21 @@ public class JPdefault extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectoSSyR/recurso/its_pto_v.png"))); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(70, 70, 70))
+            .addGap(0, 621, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(101, 101, 101))
+            .addGap(0, 509, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
